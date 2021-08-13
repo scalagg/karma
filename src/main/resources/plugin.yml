@@ -1,0 +1,9 @@
+name: karma
+version: ${git.commit.id.abbrev}
+main: com.solexgames.karma.KarmaSpigotPlugin
+
+author: SolexGames
+website: https://solexgames.com
+description: Introduces the karma currency and a new statistic tracking system.
+
+depend: [commonlibs-bukkit, Scandium]
