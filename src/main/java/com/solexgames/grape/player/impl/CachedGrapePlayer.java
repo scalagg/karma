@@ -1,6 +1,6 @@
-package com.solexgames.karma.player.impl;
+package com.solexgames.grape.player.impl;
 
-import com.solexgames.karma.player.KarmaPlayer;
+import com.solexgames.grape.player.GrapePlayer;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -13,11 +13,12 @@ import java.util.UUID;
 
 @Getter
 @RequiredArgsConstructor
-public class CachedKarmaPlayer extends KarmaPlayer {
+public class CachedGrapePlayer extends GrapePlayer {
 
     private final UUID uniqueId;
     private final String name;
 
     private final int karma;
+    private final int coins;
 
 }

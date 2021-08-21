@@ -1,4 +1,4 @@
-package com.solexgames.karma.player;
+package com.solexgames.grape.player;
 
 import java.util.UUID;
 
@@ -7,12 +7,10 @@ import java.util.UUID;
  * @since 8/13/2021
  */
 
-public abstract class KarmaPlayer {
+public abstract class GrapePlayer {
 
     public abstract UUID getUniqueId();
 
     public abstract String getName();
-
-    public abstract Integer getKarma();
 
 }
