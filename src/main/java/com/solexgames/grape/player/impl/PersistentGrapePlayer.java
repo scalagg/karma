@@ -67,8 +67,4 @@ public class PersistentGrapePlayer extends GrapePlayer implements PersistentMode
 
         return document;
     }
-
-    public Player getBukkitEntity() {
-        return Bukkit.getPlayer(this.uniqueId);
-    }
 }

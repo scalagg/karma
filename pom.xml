@@ -6,7 +6,7 @@
     <packaging>jar</packaging>
 
     <groupId>com.solexgames</groupId>
-    <artifactId>karma</artifactId>
+    <artifactId>Grape</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -81,7 +81,7 @@
             </resource>
         </resources>
 
-        <finalName>karma</finalName>
+        <finalName>Grape</finalName>
     </build>
 
     <repositories>
@@ -120,9 +120,16 @@
         <dependency>
             <groupId>com.solexgames.core</groupId>
             <artifactId>scandium-bukkit</artifactId>
-            <version>LATEST</version>
+            <version>test</version>
             <scope>system</scope>
             <systemPath>${basedir}/lib/Scandium.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.solexgames.shop</groupId>
+            <artifactId>shop-bukkit</artifactId>
+            <version>LATEST</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/Shop.jar</systemPath>
         </dependency>
     </dependencies>
 </project>

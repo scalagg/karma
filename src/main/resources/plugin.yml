@@ -5,4 +5,4 @@ main: com.solexgames.grape.GrapeSpigotPlugin
 author: SolexGames
 website: https://solexgames.com
 
-depend: [commonlibs-bukkit, Scandium]
+depend: [commonlibs-bukkit, Scandium, Shop]

@@ -7,6 +7,8 @@ import com.solexgames.grape.handler.PlayerHandler;
 import com.solexgames.grape.handler.StorageHandler;
 import com.solexgames.grape.player.impl.PersistentGrapePlayer;
 import com.solexgames.lib.acf.PaperCommandManager;
+import com.solexgames.shop.ShopSpigotPlugin;
+import com.solexgames.shop.currency.impl.GrapeCurrencyHandler;
 import me.lucko.helper.Events;
 import me.lucko.helper.plugin.ExtendedJavaPlugin;
 import org.bson.Document;
@@ -39,6 +41,8 @@ public final class GrapeSpigotPlugin extends ExtendedJavaPlugin {
 
         this.setupListeners();
         this.setupCommands();
+
+        ShopSpigotPlugin.getInstance().setCurrencyHandler(new GrapeCurrencyHandler());
     }
 
     private void setupCommands() {

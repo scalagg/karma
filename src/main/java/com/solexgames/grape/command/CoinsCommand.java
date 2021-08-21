@@ -38,12 +38,17 @@ public class CoinsCommand extends BaseCommand {
 
     @Subcommand("pay")
     @Syntax("<target> [amount]")
+    @CommandCompletion("@players")
     @Description("Send another player coins out of your own balance.")
     public void onPay(Player player, OnlinePlayer target, int amount) {
         final PersistentGrapePlayer playerGrapePlayer = this.plugin.getPlayerHandler()
                 .getByPlayer(player);
         final PersistentGrapePlayer targetGrapePlayer = this.plugin.getPlayerHandler()
                 .getByPlayer(target.getPlayer());
+
+        if (player.getUniqueId().equals(target.getPlayer().getUniqueId())) {
+            throw new ConditionFailedException("You cannot pay yourself.");
+        }
 
         if (playerGrapePlayer.getCoins() < amount) {
             throw new ConditionFailedException("You don't have " + ChatColor.YELLOW + amount + ChatColor.RED + " coins.");
@@ -52,12 +57,16 @@ public class CoinsCommand extends BaseCommand {
         targetGrapePlayer.setCoins(targetGrapePlayer.getCoins() + amount);
         playerGrapePlayer.setCoins(playerGrapePlayer.getCoins() - amount);
 
+        playerGrapePlayer.save();
+        targetGrapePlayer.save();
+
         player.sendMessage(ChatColor.YELLOW + "You gave " + ChatColor.GOLD + player.getName() + ChatColor.YELLOW + " " + ChatColor.GREEN + amount + " coins" + ChatColor.YELLOW + ".");
         target.getPlayer().sendMessage(ChatColor.YELLOW + "You've received " + ChatColor.GREEN + amount + " coins" + ChatColor.YELLOW + " from " + ChatColor.GOLD + player.getName() + ChatColor.YELLOW + ".");
     }
 
     @Subcommand("give|add")
     @Syntax("<target> [amount]")
+    @CommandCompletion("@players")
     @CommandPermission("grape.command.coins.give")
     @Description("Add coins to a player's balance.")
     public void onGive(Player player, OnlinePlayer target, int amount) {
@@ -65,6 +74,7 @@ public class CoinsCommand extends BaseCommand {
                 .getByPlayer(target.getPlayer());
 
         targetKarmaPlayer.setCoins(targetKarmaPlayer.getCoins() + amount);
+        targetKarmaPlayer.save();
 
         player.sendMessage(ChatColor.YELLOW + "You've given " + ChatColor.GOLD + player.getName() + ChatColor.YELLOW + " " + ChatColor.GREEN + amount + " coins" + ChatColor.YELLOW + ".");
         target.getPlayer().sendMessage(ChatColor.YELLOW + "You've received " + ChatColor.GREEN + amount + " coins" + ChatColor.YELLOW + ".");
@@ -72,6 +82,7 @@ public class CoinsCommand extends BaseCommand {
 
     @Subcommand("remove")
     @Syntax("<target> [amount]")
+    @CommandCompletion("@players")
     @CommandPermission("grape.command.coins.remove")
     @Description("Remove coins from a player's balance.")
     public void onRemove(Player player, OnlinePlayer target, int amount) {
@@ -79,6 +90,7 @@ public class CoinsCommand extends BaseCommand {
                 .getByPlayer(target.getPlayer());
 
         targetKarmaPlayer.setCoins(targetKarmaPlayer.getCoins() - amount);
+        targetKarmaPlayer.save();
 
         player.sendMessage(ChatColor.YELLOW + "You removed " + ChatColor.GREEN + amount + " coins" + ChatColor.YELLOW + " from " + ChatColor.GOLD + player.getName() + ChatColor.YELLOW + "'s balance.");
     }
