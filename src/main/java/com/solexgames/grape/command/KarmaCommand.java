@@ -18,12 +18,11 @@ import org.bukkit.entity.Player;
 
 public class KarmaCommand extends BaseCommand {
 
-    private final GrapeSpigotPlugin plugin = GrapeSpigotPlugin.getInstance();
 
     @CommandAlias("karma")
     @Syntax("[optional: <target>]")
     public void onDefault(Player player, @Optional OnlinePlayer target) {
-        final PersistentGrapePlayer karmaPlayer = this.plugin.getPlayerHandler()
+        final PersistentGrapePlayer karmaPlayer = GrapeSpigotPlugin.getInstance().getPlayerHandler()
                 .getByPlayer(target != null ? target.getPlayer() : player);
 
         player.sendMessage(ChatColor.LIGHT_PURPLE + (target != null ? target.getPlayer().getName() + " has" : "You have") + " " + karmaPlayer.getKarma() + " karma.");

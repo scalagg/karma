@@ -9,8 +9,6 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.bson.Document;
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
 
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
@@ -56,6 +54,12 @@ public class PersistentGrapePlayer extends GrapePlayer implements PersistentMode
                     this.getDocument(), new ReplaceOptions().upsert(true)
             );
         });
+    }
+
+    public void setCoins(int amount) {
+        this.coins = amount;
+
+        this.save();
     }
 
     public Document getDocument() {

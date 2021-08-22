@@ -18,16 +18,14 @@ import org.bukkit.entity.Player;
 @CommandAlias("coins")
 public class CoinsCommand extends BaseCommand {
 
-    private final GrapeSpigotPlugin plugin = GrapeSpigotPlugin.getInstance();
-
     @Default
     @Syntax("[optional: <target>]")
     @Description("View a specific player's balance.")
     public void onDefault(Player player, @Optional OnlinePlayer target) {
-        final PersistentGrapePlayer karmaPlayer = this.plugin.getPlayerHandler()
+        final PersistentGrapePlayer grapePlayer = GrapeSpigotPlugin.getInstance().getPlayerHandler()
                 .getByPlayer(target != null ? target.getPlayer() : player);
 
-        player.sendMessage(ChatColor.GOLD + (target != null ? target.getPlayer().getName() + " has" : "You have") + " " + karmaPlayer.getCoins() + " coins.");
+        player.sendMessage(ChatColor.GOLD + (target != null ? target.getPlayer().getName() + " has" : "You have") + " " + grapePlayer.getCoins() + " coins.");
     }
 
     @HelpCommand
@@ -41,10 +39,10 @@ public class CoinsCommand extends BaseCommand {
     @CommandCompletion("@players")
     @Description("Send another player coins out of your own balance.")
     public void onPay(Player player, OnlinePlayer target, int amount) {
-        final PersistentGrapePlayer playerGrapePlayer = this.plugin.getPlayerHandler()
-                .getByPlayer(player);
-        final PersistentGrapePlayer targetGrapePlayer = this.plugin.getPlayerHandler()
-                .getByPlayer(target.getPlayer());
+        final PersistentGrapePlayer playerGrapePlayer = GrapeSpigotPlugin.getInstance()
+                .getPlayerHandler().getByPlayer(player);
+        final PersistentGrapePlayer targetGrapePlayer = GrapeSpigotPlugin.getInstance()
+                .getPlayerHandler().getByPlayer(target.getPlayer());
 
         if (player.getUniqueId().equals(target.getPlayer().getUniqueId())) {
             throw new ConditionFailedException("You cannot pay yourself.");
@@ -57,9 +55,6 @@ public class CoinsCommand extends BaseCommand {
         targetGrapePlayer.setCoins(targetGrapePlayer.getCoins() + amount);
         playerGrapePlayer.setCoins(playerGrapePlayer.getCoins() - amount);
 
-        playerGrapePlayer.save();
-        targetGrapePlayer.save();
-
         player.sendMessage(ChatColor.YELLOW + "You gave " + ChatColor.GOLD + player.getName() + ChatColor.YELLOW + " " + ChatColor.GREEN + amount + " coins" + ChatColor.YELLOW + ".");
         target.getPlayer().sendMessage(ChatColor.YELLOW + "You've received " + ChatColor.GREEN + amount + " coins" + ChatColor.YELLOW + " from " + ChatColor.GOLD + player.getName() + ChatColor.YELLOW + ".");
     }
@@ -70,11 +65,10 @@ public class CoinsCommand extends BaseCommand {
     @CommandPermission("grape.command.coins.give")
     @Description("Add coins to a player's balance.")
     public void onGive(Player player, OnlinePlayer target, int amount) {
-        final PersistentGrapePlayer targetKarmaPlayer = this.plugin.getPlayerHandler()
-                .getByPlayer(target.getPlayer());
+        final PersistentGrapePlayer targetGrapePlayer = GrapeSpigotPlugin.getInstance()
+                .getPlayerHandler().getByPlayer(target.getPlayer());
 
-        targetKarmaPlayer.setCoins(targetKarmaPlayer.getCoins() + amount);
-        targetKarmaPlayer.save();
+        targetGrapePlayer.setCoins(targetGrapePlayer.getCoins() + amount);
 
         player.sendMessage(ChatColor.YELLOW + "You've given " + ChatColor.GOLD + player.getName() + ChatColor.YELLOW + " " + ChatColor.GREEN + amount + " coins" + ChatColor.YELLOW + ".");
         target.getPlayer().sendMessage(ChatColor.YELLOW + "You've received " + ChatColor.GREEN + amount + " coins" + ChatColor.YELLOW + ".");
@@ -86,11 +80,10 @@ public class CoinsCommand extends BaseCommand {
     @CommandPermission("grape.command.coins.remove")
     @Description("Remove coins from a player's balance.")
     public void onRemove(Player player, OnlinePlayer target, int amount) {
-        final PersistentGrapePlayer targetKarmaPlayer = this.plugin.getPlayerHandler()
-                .getByPlayer(target.getPlayer());
+        final PersistentGrapePlayer targetGrapePlayer = GrapeSpigotPlugin.getInstance()
+                .getPlayerHandler().getByPlayer(target.getPlayer());
 
-        targetKarmaPlayer.setCoins(targetKarmaPlayer.getCoins() - amount);
-        targetKarmaPlayer.save();
+        targetGrapePlayer.setCoins(targetGrapePlayer.getCoins() - amount);
 
         player.sendMessage(ChatColor.YELLOW + "You removed " + ChatColor.GREEN + amount + " coins" + ChatColor.YELLOW + " from " + ChatColor.GOLD + player.getName() + ChatColor.YELLOW + "'s balance.");
     }
