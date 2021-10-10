@@ -6,12 +6,12 @@ import com.solexgames.grape.command.KarmaCommand;
 import com.solexgames.grape.handler.PlayerHandler;
 import com.solexgames.grape.handler.StorageHandler;
 import com.solexgames.grape.player.impl.PersistentGrapePlayer;
-import com.solexgames.lib.acf.PaperCommandManager;
-import com.solexgames.shop.ShopSpigotPlugin;
-import com.solexgames.shop.currency.impl.GrapeCurrencyHandler;
+import gg.scala.lemon.Lemon;
 import me.lucko.helper.Events;
 import me.lucko.helper.plugin.ExtendedJavaPlugin;
+import net.evilblock.cubed.command.manager.CubedCommandManager;
 import org.bson.Document;
+import org.bukkit.ChatColor;
 import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import lombok.Getter;
@@ -41,13 +41,14 @@ public final class GrapeSpigotPlugin extends ExtendedJavaPlugin {
 
         this.setupListeners();
         this.setupCommands();
-
-        ShopSpigotPlugin.getInstance().setCurrencyHandler(new GrapeCurrencyHandler());
     }
 
     private void setupCommands() {
-        final PaperCommandManager paperCommandManager = new PaperCommandManager(this);
-        paperCommandManager.enableUnstableAPI("help");
+        final CubedCommandManager paperCommandManager = new CubedCommandManager(
+                this,
+                ChatColor.valueOf(Lemon.instance.lemonWebData.getPrimary()),
+                ChatColor.valueOf(Lemon.instance.lemonWebData.getSecondary())
+        );
 
         paperCommandManager.registerCommand(new CoinsCommand());
         paperCommandManager.registerCommand(new KarmaCommand());

@@ -1,8 +1,8 @@
 name: Grape
-version: ${git.commit.id.abbrev}
-main: com.solexgames.grape.GrapeSpigotPlugin
+version: 1.0.0
+main: gg.scala.grape.GrapeSpigotPlugin
 
-author: SolexGames
-website: https://solexgames.com
+author: Scala
+website: https://scala.gg
 
-depend: [commonlibs-bukkit, Scandium, Shop]
+depend: [Lemon, Peach, helper, Cubed]

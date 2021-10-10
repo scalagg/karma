@@ -1,9 +1,10 @@
 package com.solexgames.grape.handler;
 
 import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import com.solexgames.core.CorePlugin;
+import gg.scala.lemon.Lemon;
 import lombok.Getter;
 import org.bson.Document;
 
@@ -21,7 +22,11 @@ public class StorageHandler {
     private final MongoCollection<Document> playerCollection;
 
     public StorageHandler() {
-        this.client = CorePlugin.getInstance().getCoreDatabase().getClient();
+        this.client = new MongoClient(
+                new MongoClientURI(
+                        Lemon.getInstance().getMongoConfig().getUri()
+                )
+        );
 
         this.database = this.client.getDatabase("SGSoftware");
         this.playerCollection = this.database.getCollection("karma_players");
