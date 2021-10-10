@@ -1,4 +1,4 @@
-package com.solexgames.grape.commons;
+package gg.scala.grape.commons;
 
 import lombok.Getter;
 import org.bukkit.Bukkit;

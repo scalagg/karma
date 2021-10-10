@@ -1,4 +1,4 @@
-package com.solexgames.grape.handler;
+package gg.scala.grape.handler;
 
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
@@ -7,10 +7,10 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.LongSerializationPolicy;
 import com.mongodb.client.model.Filters;
-import com.solexgames.grape.GrapeSpigotPlugin;
-import com.solexgames.grape.commons.PlayerCache;
-import com.solexgames.grape.player.impl.CachedGrapePlayer;
-import com.solexgames.grape.player.impl.PersistentGrapePlayer;
+import gg.scala.grape.GrapeSpigotPlugin;
+import gg.scala.grape.commons.PlayerCache;
+import gg.scala.grape.player.impl.CachedGrapePlayer;
+import gg.scala.grape.player.impl.PersistentGrapePlayer;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.bson.Document;

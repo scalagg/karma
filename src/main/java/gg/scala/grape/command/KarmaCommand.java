@@ -1,10 +1,8 @@
-package com.solexgames.grape.command;
+package gg.scala.grape.command;
 
-import com.solexgames.grape.GrapeSpigotPlugin;
-import com.solexgames.grape.player.impl.PersistentGrapePlayer;
+import gg.scala.grape.GrapeSpigotPlugin;
+import gg.scala.grape.player.impl.PersistentGrapePlayer;
 import net.evilblock.cubed.acf.BaseCommand;
-import net.evilblock.cubed.acf.CommandHelp;
-import net.evilblock.cubed.acf.ConditionFailedException;
 import net.evilblock.cubed.acf.annotation.*;
 import net.evilblock.cubed.acf.bukkit.contexts.OnlinePlayer;
 import org.bukkit.ChatColor;

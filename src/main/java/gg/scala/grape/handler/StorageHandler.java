@@ -1,4 +1,4 @@
-package com.solexgames.grape.handler;
+package gg.scala.grape.handler;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;

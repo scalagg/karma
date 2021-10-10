@@ -1,4 +1,4 @@
-package com.solexgames.grape.model;
+package gg.scala.grape.model;
 
 import java.util.concurrent.CompletableFuture;
 

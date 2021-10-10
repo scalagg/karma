@@ -1,11 +1,11 @@
-package com.solexgames.grape;
+package gg.scala.grape;
 
 import com.mongodb.client.model.Filters;
-import com.solexgames.grape.command.CoinsCommand;
-import com.solexgames.grape.command.KarmaCommand;
-import com.solexgames.grape.handler.PlayerHandler;
-import com.solexgames.grape.handler.StorageHandler;
-import com.solexgames.grape.player.impl.PersistentGrapePlayer;
+import gg.scala.grape.command.CoinsCommand;
+import gg.scala.grape.command.KarmaCommand;
+import gg.scala.grape.handler.PlayerHandler;
+import gg.scala.grape.handler.StorageHandler;
+import gg.scala.grape.player.impl.PersistentGrapePlayer;
 import gg.scala.lemon.Lemon;
 import me.lucko.helper.Events;
 import me.lucko.helper.plugin.ExtendedJavaPlugin;

@@ -1,4 +1,4 @@
-package com.solexgames.grape.player;
+package gg.scala.grape.player;
 
 import java.util.UUID;
 

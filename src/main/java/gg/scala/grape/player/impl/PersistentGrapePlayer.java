@@ -1,10 +1,10 @@
-package com.solexgames.grape.player.impl;
+package gg.scala.grape.player.impl;
 
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.ReplaceOptions;
-import com.solexgames.grape.GrapeSpigotPlugin;
-import com.solexgames.grape.model.PersistentModel;
-import com.solexgames.grape.player.GrapePlayer;
+import gg.scala.grape.GrapeSpigotPlugin;
+import gg.scala.grape.model.PersistentModel;
+import gg.scala.grape.player.GrapePlayer;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;

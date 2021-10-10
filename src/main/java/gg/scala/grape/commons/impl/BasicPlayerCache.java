@@ -1,6 +1,6 @@
-package com.solexgames.grape.commons.impl;
+package gg.scala.grape.commons.impl;
 
-import com.solexgames.grape.commons.PlayerCache;
+import gg.scala.grape.commons.PlayerCache;
 
 /**
  * @author GrowlyX

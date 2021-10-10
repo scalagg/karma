@@ -1,6 +1,6 @@
-package com.solexgames.grape.player.impl;
+package gg.scala.grape.player.impl;
 
-import com.solexgames.grape.player.GrapePlayer;
+import gg.scala.grape.player.GrapePlayer;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
