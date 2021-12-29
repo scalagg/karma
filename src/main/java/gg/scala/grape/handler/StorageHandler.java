@@ -28,7 +28,7 @@ public class StorageHandler {
                 )
         );
 
-        this.database = this.client.getDatabase("SGSoftware");
+        this.database = this.client.getDatabase("Scala");
         this.playerCollection = this.database.getCollection("karma_players");
     }
 }
