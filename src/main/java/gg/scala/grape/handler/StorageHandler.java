@@ -22,7 +22,7 @@ public class StorageHandler {
 
     public StorageHandler() {
         this.client = ScalaDataStoreShared.getINSTANCE()
-                .getNewMongoConnection().getConnection();
+                .getNewMongoConnection().createNewConnection();
 
         this.database = this.client.getDatabase("Scala");
         this.playerCollection = this.database.getCollection("GrapePlayer");
