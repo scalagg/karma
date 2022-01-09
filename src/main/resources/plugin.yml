@@ -1,8 +1,8 @@
 name: Grape
-version: 1.0.0
+version: 1.0.1
 main: gg.scala.grape.GrapeSpigotPlugin
 
 author: Scala
 website: https://scala.gg
 
-depend: [Lemon, Peach, helper, Cubed]
+depend: [Lemon, Peach, helper, Cubed, store-spigot]

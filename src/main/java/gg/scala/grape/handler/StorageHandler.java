@@ -1,10 +1,9 @@
 package gg.scala.grape.handler;
 
 import com.mongodb.MongoClient;
-import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import gg.scala.lemon.Lemon;
+import gg.scala.store.ScalaDataStoreShared;
 import lombok.Getter;
 import org.bson.Document;
 
@@ -22,13 +21,10 @@ public class StorageHandler {
     private final MongoCollection<Document> playerCollection;
 
     public StorageHandler() {
-        this.client = new MongoClient(
-                new MongoClientURI(
-                        Lemon.getInstance().getMongoConfig().getUri()
-                )
-        );
+        this.client = ScalaDataStoreShared.getINSTANCE()
+                .getNewMongoConnection().getConnection();
 
         this.database = this.client.getDatabase("Scala");
-        this.playerCollection = this.database.getCollection("karma_players");
+        this.playerCollection = this.database.getCollection("GrapePlayer");
     }
 }

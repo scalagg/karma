@@ -140,9 +140,17 @@
         </dependency>
 
         <dependency>
+            <groupId>com.github.scalagg.scala-store</groupId>
+            <artifactId>shared</artifactId>
+            <version>1e41208707</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/store-spigot.jar</systemPath>
+        </dependency>
+
+        <dependency>
             <groupId>me.lucko</groupId>
             <artifactId>helper</artifactId>
-            <version>5.6.7</version>
+            <version>5.6.8</version>
             <scope>system</scope>
             <systemPath>${basedir}/lib/helper.jar</systemPath>
         </dependency>
