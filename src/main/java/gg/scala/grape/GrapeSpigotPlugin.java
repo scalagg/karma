@@ -1,6 +1,9 @@
 package gg.scala.grape;
 
 import com.mongodb.client.model.Filters;
+import gg.scala.commons.ExtendedScalaPlugin;
+import gg.scala.commons.annotations.commands.ManualRegister;
+import gg.scala.commons.annotations.container.ContainerEnable;
 import gg.scala.grape.command.CoinsCommand;
 import gg.scala.grape.command.KarmaCommand;
 import gg.scala.grape.handler.PlayerHandler;
@@ -24,7 +27,7 @@ import java.util.concurrent.CompletableFuture;
  */
 
 @Getter
-public final class GrapeSpigotPlugin extends ExtendedJavaPlugin {
+public final class GrapeSpigotPlugin extends ExtendedScalaPlugin {
 
     @Getter
     private static GrapeSpigotPlugin instance;
@@ -32,26 +35,20 @@ public final class GrapeSpigotPlugin extends ExtendedJavaPlugin {
     private StorageHandler storageHandler;
     private PlayerHandler playerHandler;
 
-    @Override
-    protected void enable() {
+    @ContainerEnable
+    public void containerEnable() {
         instance = this;
 
         this.storageHandler = new StorageHandler();
         this.playerHandler = new PlayerHandler(this);
 
         this.setupListeners();
-        this.setupCommands();
     }
 
-    private void setupCommands() {
-        final CubedCommandManager paperCommandManager = new CubedCommandManager(
-                this,
-                ChatColor.valueOf(Lemon.instance.lemonWebData.getPrimary()),
-                ChatColor.valueOf(Lemon.instance.lemonWebData.getSecondary())
-        );
-
-        paperCommandManager.registerCommand(new CoinsCommand());
-        paperCommandManager.registerCommand(new KarmaCommand());
+    @ManualRegister
+    public void setupCommands(CubedCommandManager manager) {
+        manager.registerCommand(new CoinsCommand());
+        manager.registerCommand(new KarmaCommand());
     }
 
     private void setupListeners() {
