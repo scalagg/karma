@@ -4,20 +4,17 @@ import com.mongodb.client.model.Filters;
 import gg.scala.commons.ExtendedScalaPlugin;
 import gg.scala.commons.annotations.commands.ManualRegister;
 import gg.scala.commons.annotations.container.ContainerEnable;
+import gg.scala.commons.command.ScalaCommandManager;
 import gg.scala.grape.command.CoinsCommand;
 import gg.scala.grape.command.KarmaCommand;
 import gg.scala.grape.handler.PlayerHandler;
 import gg.scala.grape.handler.StorageHandler;
 import gg.scala.grape.player.impl.PersistentGrapePlayer;
-import gg.scala.lemon.Lemon;
+import lombok.Getter;
 import me.lucko.helper.Events;
-import me.lucko.helper.plugin.ExtendedJavaPlugin;
-import net.evilblock.cubed.command.manager.CubedCommandManager;
 import org.bson.Document;
-import org.bukkit.ChatColor;
 import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import lombok.Getter;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -46,7 +43,7 @@ public final class GrapeSpigotPlugin extends ExtendedScalaPlugin {
     }
 
     @ManualRegister
-    public void setupCommands(CubedCommandManager manager) {
+    public void setupCommands(ScalaCommandManager manager) {
         manager.registerCommand(new CoinsCommand());
         manager.registerCommand(new KarmaCommand());
     }
