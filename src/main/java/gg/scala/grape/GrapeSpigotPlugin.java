@@ -6,7 +6,6 @@ import gg.scala.commons.annotations.commands.ManualRegister;
 import gg.scala.commons.annotations.container.ContainerEnable;
 import gg.scala.commons.command.ScalaCommandManager;
 import gg.scala.grape.command.CoinsCommand;
-import gg.scala.grape.command.KarmaCommand;
 import gg.scala.grape.handler.PlayerHandler;
 import gg.scala.grape.handler.StorageHandler;
 import gg.scala.grape.player.impl.PersistentGrapePlayer;
@@ -45,7 +44,6 @@ public final class GrapeSpigotPlugin extends ExtendedScalaPlugin {
     @ManualRegister
     public void setupCommands(ScalaCommandManager manager) {
         manager.registerCommand(new CoinsCommand());
-        manager.registerCommand(new KarmaCommand());
     }
 
     private void setupListeners() {

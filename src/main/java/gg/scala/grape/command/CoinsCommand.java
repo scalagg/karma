@@ -19,7 +19,6 @@ import org.bukkit.entity.Player;
 public class CoinsCommand extends BaseCommand {
 
     @Default
-    @Syntax("[optional: <target>]")
     @Description("View a specific player's balance.")
     public void onDefault(Player player, @Optional OnlinePlayer target) {
         final PersistentGrapePlayer grapePlayer = GrapeSpigotPlugin.getInstance().getPlayerHandler()
@@ -35,7 +34,6 @@ public class CoinsCommand extends BaseCommand {
     }
 
     @Subcommand("pay")
-    @Syntax("<target> [amount]")
     @CommandCompletion("@players")
     @Description("Send another player coins out of your own balance.")
     public void onPay(Player player, OnlinePlayer target, int amount) {
